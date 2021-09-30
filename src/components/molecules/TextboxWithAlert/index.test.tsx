@@ -7,11 +7,11 @@ import * as stories from "./index.stories";
 describe("components/molecules/TextboxWithAlert", () => {
   // @ts-expect-error
   const { Default, Error } = composeStories(stories);
-  it("errorMessage が表示されない", async () => {
+  test("errorMessage が表示されない", async () => {
     render(<Default />);
     await waitFor(() => expect(screen.queryByRole("alert")).toBeNull());
   });
-  it("errorMessage が表示される", async () => {
+  test("errorMessage が表示される", async () => {
     render(<Error />);
     const alert = await waitFor(() => screen.getByRole("alert"));
     expect(alert).toBeInTheDocument();

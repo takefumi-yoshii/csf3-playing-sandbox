@@ -3,10 +3,7 @@ import React from "react";
 import styles from "./style.module.css";
 
 type Props = {
-  inputProps: React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  >;
+  inputProps: React.ComponentProps<"input">;
   errorMessage?: string;
 };
 
