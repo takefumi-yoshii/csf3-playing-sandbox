@@ -1,3 +1,6 @@
+import { addDecorator } from "@storybook/react";
+import { initialize, mswDecorator } from "msw-storybook-addon";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +9,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+initialize();
+addDecorator(mswDecorator);
