@@ -6,22 +6,22 @@ import * as stories from "./index.stories";
 
 describe("components/organisms/UserCreateForm", () => {
   // @ts-expect-error
-  const { InValid1, InValid2, InValid3, Valid } = composeStories(stories);
+  const { Invalid1, Invalid2, Invalid3, Valid } = composeStories(stories);
   test("姓未入力の場合エラーが表示される", async () => {
-    render(<InValid1 />);
-    await InValid1.play();
+    render(<Invalid1 />);
+    await Invalid1.play();
     const alerts = await waitFor(() => screen.getAllByRole("alert"));
     expect(alerts[0]).toHaveTextContent("姓が未入力です");
   });
   test("名未入力の場合エラーが表示される", async () => {
-    render(<InValid2 />);
-    await InValid2.play();
+    render(<Invalid2 />);
+    await Invalid2.play();
     const alerts = await waitFor(() => screen.getAllByRole("alert"));
     expect(alerts[0]).toHaveTextContent("名が未入力です");
   });
   test("メールアドレス未入力の場合エラーが表示される", async () => {
-    render(<InValid3 />);
-    await InValid3.play();
+    render(<Invalid3 />);
+    await Invalid3.play();
     const alerts = await waitFor(() => screen.getAllByRole("alert"));
     expect(alerts[0]).toHaveTextContent("メールアドレス");
   });

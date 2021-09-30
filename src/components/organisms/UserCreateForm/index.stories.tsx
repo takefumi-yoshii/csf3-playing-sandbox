@@ -24,17 +24,17 @@ const playFactory = (step: 0 | 1 | 2 | 3) => async () => {
   userEvent.click(screen.getByRole("button"));
 };
 
-export const InValid1: Story = {
+export const Invalid1: Story = {
   storyName: "未入力で送信",
   play: playFactory(0),
 };
 
-export const InValid2: Story = {
+export const Invalid2: Story = {
   storyName: "姓未入力で送信",
   play: playFactory(1),
 };
 
-export const InValid3: Story = {
+export const Invalid3: Story = {
   storyName: "名未入力で送信",
   play: playFactory(2),
 };
