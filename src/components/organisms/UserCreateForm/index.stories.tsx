@@ -25,17 +25,17 @@ const playFactory = (step: 0 | 1 | 2 | 3) => async () => {
 };
 
 export const Invalid1: Story = {
-  storyName: "未入力で送信",
+  storyName: "姓未入力で送信",
   play: playFactory(0),
 };
 
 export const Invalid2: Story = {
-  storyName: "姓未入力で送信",
+  storyName: "名未入力で送信",
   play: playFactory(1),
 };
 
 export const Invalid3: Story = {
-  storyName: "名未入力で送信",
+  storyName: "メールアドレス未入力で送信",
   play: playFactory(2),
 };
 
