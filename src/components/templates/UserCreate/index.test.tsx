@@ -5,8 +5,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { setupServer } from "msw/node";
 import React from "react";
 import * as stories from "./index.stories";
-// ____________________________________________________________
-//
+
 describe("components/templates/UserCreate", () => {
   // @ts-expect-error
   const { Invalid409, Valid201 } = composeStories(stories);

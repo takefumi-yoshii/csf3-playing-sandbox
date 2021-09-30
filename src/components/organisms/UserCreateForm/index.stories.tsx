@@ -3,49 +3,49 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { UserCreateForm } from "./";
 
+type Story = ComponentStoryObj<typeof UserCreateForm>;
+
 export default { component: UserCreateForm };
 
-export const InValid1: ComponentStoryObj<typeof UserCreateForm> = {
+const type = (step: 1 | 2 | 3) => {
+  userEvent.type(screen.getByPlaceholderText("姓"), "田中");
+  if (step === 1) return;
+  userEvent.type(screen.getByPlaceholderText("名"), "太郎");
+  if (step === 2) return;
+  userEvent.type(
+    screen.getByPlaceholderText("メールアドレス"),
+    "example@gmail.com"
+  );
+};
+
+export const InValid1: Story = {
   storyName: "未入力で送信",
   play: async () => {
     userEvent.click(screen.getByRole("button"));
   },
 };
 
-export const InValid2: ComponentStoryObj<typeof UserCreateForm> = {
+export const InValid2: Story = {
   storyName: "姓未入力で送信",
   play: async () => {
-    userEvent.type(screen.getByPlaceholderText("名"), "太郎");
-    userEvent.type(
-      screen.getByPlaceholderText("メールアドレス"),
-      "example@gmail.com"
-    );
+    type(1);
     userEvent.click(screen.getByRole("button"));
   },
 };
 
-export const InValid3: ComponentStoryObj<typeof UserCreateForm> = {
+export const InValid3: Story = {
   storyName: "名未入力で送信",
   play: async () => {
-    userEvent.type(screen.getByPlaceholderText("姓"), "田中");
-    userEvent.type(
-      screen.getByPlaceholderText("メールアドレス"),
-      "example@gmail.com"
-    );
+    type(2);
     userEvent.click(screen.getByRole("button"));
   },
 };
 
-export const Valid: ComponentStoryObj<typeof UserCreateForm> = {
+export const Valid: Story = {
   storyName: "正常入力で送信",
-  args: { handleSubmit: (data) => { } },
+  args: { handleSubmit: (data) => {} },
   play: async () => {
-    userEvent.type(screen.getByPlaceholderText("姓"), "田中");
-    userEvent.type(screen.getByPlaceholderText("名"), "太郎");
-    userEvent.type(
-      screen.getByPlaceholderText("メールアドレス"),
-      "example@gmail.com"
-    );
+    type(3);
     userEvent.click(screen.getByRole("button"));
   },
 };

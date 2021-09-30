@@ -4,6 +4,8 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { UserCreate } from "./";
 
+type Story = ComponentStoryObj<typeof UserCreate>;
+
 export default { component: UserCreate };
 
 const playFactory = (mail: string) => async () => {
@@ -13,13 +15,13 @@ const playFactory = (mail: string) => async () => {
   userEvent.click(screen.getByRole("button"));
 };
 
-export const Invalid409: ComponentStoryObj<typeof UserCreate> = {
+export const Invalid409: Story = {
   storyName: "異常系レスポンス",
   play: playFactory("example-409@gmail.com"),
   parameters: { msw: handlers },
 };
 
-export const Valid201: ComponentStoryObj<typeof UserCreate> = {
+export const Valid201: Story = {
   storyName: "正常系レスポンス",
   play: playFactory("example-201@gmail.com"),
   parameters: { msw: handlers },
