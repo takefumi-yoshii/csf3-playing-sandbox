@@ -16,7 +16,7 @@ describe("components/templates/UserCreate", () => {
   test("登録済みメールアドレスの場合、エラーが表示される", async () => {
     render(<Invalid409 />);
     await Invalid409.play();
-    const alert = await waitFor(() => screen.getByRole("alert"));
+    const alert = await screen.findByRole("alert");
     expect(alert).toHaveTextContent("登録済みのアドレスです");
   });
   test("登録が成功した場合、OKが表示される", async () => {

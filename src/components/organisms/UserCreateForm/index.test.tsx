@@ -10,19 +10,19 @@ describe("components/organisms/UserCreateForm", () => {
   test("姓未入力の場合エラーが表示される", async () => {
     render(<Invalid1 />);
     await Invalid1.play();
-    const alerts = await waitFor(() => screen.getAllByRole("alert"));
+    const alerts = await screen.findAllByRole("alert");
     expect(alerts[0]).toHaveTextContent("姓が未入力です");
   });
   test("名未入力の場合エラーが表示される", async () => {
     render(<Invalid2 />);
     await Invalid2.play();
-    const alerts = await waitFor(() => screen.getAllByRole("alert"));
+    const alerts = await screen.findAllByRole("alert");
     expect(alerts[0]).toHaveTextContent("名が未入力です");
   });
   test("メールアドレス未入力の場合エラーが表示される", async () => {
     render(<Invalid3 />);
     await Invalid3.play();
-    const alerts = await waitFor(() => screen.getAllByRole("alert"));
+    const alerts = await screen.findAllByRole("alert");
     expect(alerts[0]).toHaveTextContent("メールアドレス");
   });
   test("期待値を満たしている場合エラーが表示されない", async () => {

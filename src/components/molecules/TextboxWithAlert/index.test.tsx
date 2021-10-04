@@ -13,7 +13,7 @@ describe("components/molecules/TextboxWithAlert", () => {
   });
   test("errorMessage が表示される", async () => {
     render(<Error />);
-    const alert = await waitFor(() => screen.getByRole("alert"));
+    const alert = await screen.findByRole("alert");
     expect(alert).toBeInTheDocument();
   });
 });
